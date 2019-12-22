@@ -1,0 +1,58 @@
+body {
+    background-color: #000000;
+}
+
+.page-header {
+    background-color: #000000;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited {
+    color: #04FB04;
+    text-align:  center;
+    font-size: 200%; 
+    font-family: 'Press Start 2P';
+    text-decoration: none;
+}
+
+.content {
+    margin-left: 40px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Press Start 2P';
+}
+
+.date {
+    color: #2cbe1863;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.post {
+    margin-bottom: 20px;
+}
+
+.post h1 a, .post h1 a:visited {
+    color: #04FB04;
+}
+
+.post h1 a:hover {
+    color: #fb04fb;
+    text-decoration: none;
+}
