@@ -1,9 +1,18 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import path
-from . import views
+from blog.views import BlogListView, BlogDetailView, BlogCreateView
+from blog.views import PostListView, PostDetailView, PostCreateView
+from blog.views import CommentCreateView
 
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
-    path('post/<int:pk>/', views.post_detail, name='post_detail'),
-    path('post/new/', views.post_new, name='post_new'),
-    path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
+    # path('', BlogListView.as_view(), name='home'),
+    path('', BlogListView.as_view(), name='blog-list'),
+    path('blog/create/', login_required(BlogCreateView.as_view()), name='blog-create'),
+    path('blog/<int:pk>/', BlogDetailView.as_view(), name='post-detail'),
+
+    path('<str:slug>/', PostListView.as_view(), name='post-list'),
+    path('post/create/', login_required(PostCreateView.as_view()), name='post-create'),
+    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
+
+    path('<int:post_id>/comment/create/', login_required(CommentCreateView.as_view()), name='comment-create')
 ]

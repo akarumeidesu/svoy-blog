@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} {{ object.title }} {% endblock %}
+{% block content %}
+<h2>blog detail</h2>
+
+<ul>
+    <li>
+        <h4>{{ object.title }}</h4>
+        <p>{{ object.text }}</p>
+        <p>{{ object.author }} / {{ object.created }}</p>
+    </li>
+</ul>
+<a href="{% url 'blog-list' object.blog.user.username %}">back</a>
+
+{% endblock %}

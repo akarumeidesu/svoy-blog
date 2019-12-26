@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} comment {% endblock %}
+{% block content %}
+<h2>comment this</h2>
+<form method="POST">
+    {% csrf_token %}
+    <!-- {{ form.as_table }} -->
+    {{ form.as_p }}
+    <button type="submit">write</button>
+</form>
+<a href="{% url 'blog-list' %}">back</a>
+{% endblock %}
