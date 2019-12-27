@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% block title %} create blog {% endblock %}
+{% block title %} create diary {% endblock %}
 {% block content %}
-<h2>create blog</h2>
+<h3>create diary</h3>
 <form method="POST">
     {% csrf_token %}
     <!-- {{ form.as_table }} -->
     {{ form.as_p }}
-    <button type="submit">create blog</button>
+    <button type="submit">create diary</button>
 </form>
 <a href="{% url 'blog-list' %}">back</a>
 {% endblock %}

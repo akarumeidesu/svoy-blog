@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
-{% block title %} blog {% endblock %}
+{% comment %} {% block title %} blog {% endblock %} {% endcomment %}
 {% block content %}
-<h2>blog list</h2>
+<h3> all diaries</h3>
     {% if user.is_authenticated and not user.blog %}
-    <a href="{% url 'blog-create' %}">create blog</a>
+    <a href="{% url 'blog-create' %}">create diary</a>
     {% endif %}
 <ul>
     {% for blog in object_list %}
     <li>
-        <h4><a href="{% url 'post-list' blog.user.username %}">{{ blog.title }}</a></h4>
+        {% comment %} <h4><a href="{% url 'post-list' blog.user.username %}">{{ blog.title }}</a></h4> {% endcomment %}
+        <h4><a href="{% url 'blog-detail' blog.id %}">{{ blog.title }}</a></h4>
         <p>{{ blog.description }}</p>
-        <p><i>{{ blog.user.username }}</i></p>
+        <p><i>by {{ blog.user.username }}</i></p>
     </li>
     {% empty %}
-        <li>no blogs</li>
+        <li>no diaries</li>
     {% endfor %}
 </ul>
 {% endblock %}

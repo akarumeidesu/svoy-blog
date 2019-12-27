@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
 {% block title %} {{ object.title }} {% endblock %}
 {% block content %}
-<h2>post detail</h2>
+<h3>{{ object.title }}</h3>
 
 <ul>
-    <li>
-        <h4>{{ object.title }}</h4>
+ 
         <p>{{ object.text }}</p>
-        <p>{{ object.author }} / {{ object.created }}</p>
+        <p>{{ object.created }}</p>
 
         <a href="{% url 'comment-create' object.id %}">comment this</a>
 
         {% for comment in object.comment_set.all %}
-            <p><i>comment from {{ comment.user.username }}</i></p>
-            <p>{{ comment.text }}</p>
+            <li><p><i>{{ comment.user.username }}:</i> {{ comment.text }}</p></li>
         {% endfor %}
-    </li>
+
 </ul>
 <a href="{% url 'post-list' object.blog.user.username %}">back</a>
 

@@ -7,6 +7,11 @@ from blog.models import Post, Blog, Comment
 
 
 
+# def index(request):
+#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
+#     context = {'latest_question_list': latest_question_list}
+#     return render(request, 'home.html', context)
+
 # BLOGS
 
 class BlogListView(ListView):
@@ -58,10 +63,14 @@ class PostCreateView(CreateView):
 class CommentCreateView(CreateView):
     model = Comment
     form_class = CommentForm
-    success_url = reverse_lazy('blog-list')
+    # success_url = reverse_lazy('post-detail', args=[self.kwargs.get('post_id')])
 
     def form_valid(self, form):
         post = Post.objects.get(id=self.kwargs.get('post_id'))
         form.instance.post = post
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    def get_success_url(self, **kwargs):         
+        if  kwargs != None:
+            return reverse_lazy('post-detail', args=[self.kwargs.get('post_id')])

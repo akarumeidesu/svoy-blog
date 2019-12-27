@@ -8,8 +8,8 @@ class Blog(models.Model):
     title = models.CharField(max_length=255, blank=False, null=False)
     description = models.TextField(blank=True, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # pub_date = models.DateTimeField(auto_now_add=True)
- 
+    image = models.ImageField(upload_to="blog", default="blog/pepe.jpg")
+
     def __str__(self):
         return self.title
 
@@ -19,11 +19,6 @@ class Post(models.Model):
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    # published_date = models.DateTimeField(blank=True, null=True)
-
-    # def publish(self):
-    #     self.published_date = timezone.now()
-    #     self.save()
 
     def __str__(self):
         return self.title
